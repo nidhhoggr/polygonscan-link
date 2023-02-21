@@ -19,13 +19,13 @@ export function createCustomExplorerLink(hash: string, customNetworkUrl: string)
 
 export function createExplorerLink(hash: string, network: string): string {
   const prefix = prefixForNetwork(network);
-  return prefix === null ? '' : `https://${prefix}etherscan.io/tx/${hash}`;
+  return prefix === null ? '' : `https://${prefix}polygonscan.com/tx/${hash}`;
 
 }
 
 export function createExplorerLinkForChain(hash: string, chainId: string): string {
   const prefix = prefixForChain(chainId);
-  return prefix === null ? '' : `https://${prefix}etherscan.io/tx/${hash}`;
+  return prefix === null ? '' : `https://${prefix}polygonscan.com/tx/${hash}`;
 }
 
 export function getBlockExplorerLink(transaction: TransactionInterface, rpcPrefs: RpcPrefsInterface = {}) {

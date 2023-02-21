@@ -14,17 +14,17 @@ const {
   getTokenTrackerLink,
 } = require('../dist');
 
-// `https://${prefix}etherscan.io/address/${address}`
+// `https://${prefix}polygonscan.com/address/${address}`
 describe('account-link', function () {
   describe('by networkId', function () {
     it('should handle mainnet correctly', function () {
-      const result = createAccountLink('foo', '1');
-      assert.strictEqual(result, 'https://etherscan.io/address/foo', 'should handle mainnet');
+      const result = createAccountLink('foo', '137');
+      assert.strictEqual(result, 'https://polygonscan.com/address/foo', 'should handle mainnet');
     });
 
-    it('should handle goerli correctly', function () {
-      const result = createAccountLink('foo', '5');
-      assert.strictEqual(result, 'https://goerli.etherscan.io/address/foo', 'should handle goerli');
+    it('should handle mumbai correctly', function () {
+      const result = createAccountLink('foo', '80001');
+      assert.strictEqual(result, 'https://mumbai.polygonscan.com/address/foo', 'should handle mumbai');
     });
 
     it('should have null as a prefix', function () {
@@ -35,13 +35,13 @@ describe('account-link', function () {
 
   describe('by chainId', function () {
     it('should handle mainnet correctly', function () {
-      const result = createAccountLinkForChain('foo', '0x1');
-      assert.strictEqual(result, 'https://etherscan.io/address/foo', 'should handle mainnet');
+      const result = createAccountLinkForChain('foo', '0x89');
+      assert.strictEqual(result, 'https://polygonscan.com/address/foo', 'should handle mainnet');
     });
 
-    it('should handle goerli correctly', function () {
-      const result = createAccountLinkForChain('foo', '0x5');
-      assert.strictEqual(result, 'https://goerli.etherscan.io/address/foo', 'should handle goerli');
+    it('should handle mumbai correctly', function () {
+      const result = createAccountLinkForChain('foo', '0x13881');
+      assert.strictEqual(result, 'https://mumbai.polygonscan.com/address/foo', 'should handle mumbai');
     });
 
     it('should have null as a prefix', function () {
@@ -59,18 +59,18 @@ describe('account-link', function () {
     it('should return the correct account-link url for an account based on chainId, networkId and rpcPref args', function () {
       const getAccountLinkTests = [
         {
-          expected: 'https://etherscan.io/address/0xabcd',
-          chainId: '0x1',
+          expected: 'https://polygonscan.com/address/0xabcd',
+          chainId: '0x89',
           address: '0xabcd',
         },
         {
-          expected: 'https://etherscan.io/address/0xabcd',
-          networkId: '1',
+          expected: 'https://polygonscan.com/address/0xabcd',
+          networkId: '137',
           address: '0xabcd',
         },
         {
-          expected: 'https://goerli.etherscan.io/address/0xdef0',
-          chainId: '0x5',
+          expected: 'https://mumbai.polygonscan.com/address/0xdef0',
+          chainId: '0x13881',
           address: '0xdef0',
           rpcPrefs: {},
         },
@@ -86,7 +86,7 @@ describe('account-link', function () {
         {
           // test handling of trailing `/` in `blockExplorerUrl` for a custom RPC
           expected: 'https://another.block.explorer/address/0xdef0',
-          chainId: '0x1f',
+          chainId: '0x89f',
           address: '0xdef0',
           rpcPrefs: {
             blockExplorerUrl: 'https://another.block.explorer/',
@@ -100,17 +100,17 @@ describe('account-link', function () {
   });
 });
 
-// `https://${prefix}etherscan.io/tx/${hash}`
+// `https://${prefix}polygonscan.com/tx/${hash}`
 describe('explorer-link', function () {
   describe('by networkId', function () {
     it('should handle mainnet correctly', function () {
-      const result = createExplorerLink('foo', '1');
-      assert.strictEqual(result, 'https://etherscan.io/tx/foo', 'should handle mainnet');
+      const result = createExplorerLink('foo', '137');
+      assert.strictEqual(result, 'https://polygonscan.com/tx/foo', 'should handle mainnet');
     });
 
-    it('should handle goerli correctly', function () {
-      const result = createExplorerLink('foo', '5');
-      assert.strictEqual(result, 'https://goerli.etherscan.io/tx/foo', 'should handle goerli');
+    it('should handle mumbai correctly', function () {
+      const result = createExplorerLink('foo', '80001');
+      assert.strictEqual(result, 'https://mumbai.polygonscan.com/tx/foo', 'should handle mumbai');
     });
 
     it('should have null as a prefix', function () {
@@ -121,13 +121,13 @@ describe('explorer-link', function () {
 
   describe('by chainId', function () {
     it('should handle mainnet correctly', function () {
-      const result = createExplorerLinkForChain('foo', '0x1');
-      assert.strictEqual(result, 'https://etherscan.io/tx/foo', 'should handle mainnet');
+      const result = createExplorerLinkForChain('foo', '0x89');
+      assert.strictEqual(result, 'https://polygonscan.com/tx/foo', 'should handle mainnet');
     });
 
-    it('should handle goerli correctly', function () {
-      const result = createExplorerLinkForChain('foo', '0x5');
-      assert.strictEqual(result, 'https://goerli.etherscan.io/tx/foo', 'should handle goerli');
+    it('should handle mumbai correctly', function () {
+      const result = createExplorerLinkForChain('foo', '0x13881');
+      assert.strictEqual(result, 'https://mumbai.polygonscan.com/tx/foo', 'should handle mumbai');
     });
 
     it('should have null as a prefix', function () {
@@ -143,30 +143,30 @@ describe('explorer-link', function () {
 });
 
 /**
- * `https://${prefix}etherscan.io/token/${tokenAddress}${
+ * `https://${prefix}polygonscan.com/token/${tokenAddress}${
  *    holderAddress ? `?a=${ holderAddress }` : ''
  *  }`
  */
 describe('token-tracker-link', function () {
   describe('by networkId', function () {
     it('should handle mainnet correctly (no account)', function () {
-      const result = createTokenTrackerLink('foo', '1');
-      assert.strictEqual(result, 'https://etherscan.io/token/foo', 'should handle mainnet');
+      const result = createTokenTrackerLink('foo', '137');
+      assert.strictEqual(result, 'https://polygonscan.com/token/foo', 'should handle mainnet');
     });
 
-    it('should handle goerli correctly (no account)', function () {
-      const result = createTokenTrackerLink('foo', '5');
-      assert.strictEqual(result, 'https://goerli.etherscan.io/token/foo', 'should handle goerli');
+    it('should handle mumbai correctly (no account)', function () {
+      const result = createTokenTrackerLink('foo', '80001');
+      assert.strictEqual(result, 'https://mumbai.polygonscan.com/token/foo', 'should handle mumbai');
     });
 
     it('should handle mainnet correctly (account)', function () {
-      const result = createTokenTrackerLink('foo', '1', '0xabc');
-      assert.strictEqual(result, 'https://etherscan.io/token/foo?a=0xabc', 'should handle mainnet');
+      const result = createTokenTrackerLink('foo', '137', '0xabc');
+      assert.strictEqual(result, 'https://polygonscan.com/token/foo?a=0xabc', 'should handle mainnet');
     });
 
-    it('should handle goerli correctly (account)', function () {
-      const result = createTokenTrackerLink('foo', '5', '0xabc');
-      assert.strictEqual(result, 'https://goerli.etherscan.io/token/foo?a=0xabc', 'should handle goerli');
+    it('should handle mumbai correctly (account)', function () {
+      const result = createTokenTrackerLink('foo', '80001', '0xabc');
+      assert.strictEqual(result, 'https://mumbai.polygonscan.com/token/foo?a=0xabc', 'should handle mumbai');
     });
 
     it('should null has a prefix', function () {
@@ -177,23 +177,23 @@ describe('token-tracker-link', function () {
 
   describe('by chainId', function () {
     it('should handle mainnet correctly (no account)', function () {
-      const result = createTokenTrackerLinkForChain('foo', '0x1');
-      assert.strictEqual(result, 'https://etherscan.io/token/foo', 'should handle mainnet');
+      const result = createTokenTrackerLinkForChain('foo', '0x89');
+      assert.strictEqual(result, 'https://polygonscan.com/token/foo', 'should handle mainnet');
     });
 
-    it('should handle goerli correctly (no account)', function () {
-      const result = createTokenTrackerLinkForChain('foo', '0x5');
-      assert.strictEqual(result, 'https://goerli.etherscan.io/token/foo', 'should handle goerli');
+    it('should handle mumbai correctly (no account)', function () {
+      const result = createTokenTrackerLinkForChain('foo', '0x13881');
+      assert.strictEqual(result, 'https://mumbai.polygonscan.com/token/foo', 'should handle mumbai');
     });
 
     it('should handle mainnet correctly (account)', function () {
-      const result = createTokenTrackerLinkForChain('foo', '0x1', '0xabc');
-      assert.strictEqual(result, 'https://etherscan.io/token/foo?a=0xabc', 'should handle mainnet');
+      const result = createTokenTrackerLinkForChain('foo', '0x89', '0xabc');
+      assert.strictEqual(result, 'https://polygonscan.com/token/foo?a=0xabc', 'should handle mainnet');
     });
 
-    it('should handle goerli correctly (account)', function () {
-      const result = createTokenTrackerLinkForChain('foo', '0x5', '0xabc');
-      assert.strictEqual(result, 'https://goerli.etherscan.io/token/foo?a=0xabc', 'should handle goerli');
+    it('should handle mumbai correctly (account)', function () {
+      const result = createTokenTrackerLinkForChain('foo', '0x13881', '0xabc');
+      assert.strictEqual(result, 'https://mumbai.polygonscan.com/token/foo?a=0xabc', 'should handle mumbai');
     });
 
     it('should null has a prefix', function () {
@@ -211,13 +211,13 @@ describe('token-tracker-link', function () {
 
         const getTokenTrackerTests = [
           {
-            expected: 'https://etherscan.io/token/0xabcd',
-            networkId: '1',
+            expected: 'https://polygonscan.com/token/0xabcd',
+            networkId: '137',
             tokenAddress: '0xabcd',
           },
           {
-            expected: 'https://goerli.etherscan.io/token/0xdef0',
-            networkId: '5',
+            expected: 'https://mumbai.polygonscan.com/token/0xdef0',
+            networkId: '80001',
             tokenAddress: '0xdef0',
           },
           {
@@ -237,20 +237,20 @@ describe('token-tracker-link', function () {
             },
           },
           {
-            expected: 'https://etherscan.io/token/0xabcd',
-            chainId: '0x1',
+            expected: 'https://polygonscan.com/token/0xabcd',
+            chainId: '0x89',
             tokenAddress: '0xabcd',
           },
           {
-            expected: 'https://goerli.etherscan.io/token/0xdef0',
-            chainId: '0x5',
+            expected: 'https://mumbai.polygonscan.com/token/0xdef0',
+            chainId: '0x13881',
             tokenAddress: '0xdef0',
             rpcPrefs: {},
           },
           {
             // test handling of `blockExplorerUrl` for a custom RPC
             expected: 'https://block.explorer/token/0xabcd',
-            chainId: '0x1f',
+            chainId: '0x89f',
             tokenAddress: '0xabcd',
             rpcPrefs: {
               blockExplorerUrl: 'https://block.explorer',
@@ -286,16 +286,16 @@ describe('token-tracker-link', function () {
 
       const getBlockExplorerLinkTests = [
         {
-          expected: 'https://etherscan.io/tx/0xabcd',
+          expected: 'https://polygonscan.com/tx/0xabcd',
           transaction: {
-            metamaskNetworkId: '1',
+            metamaskNetworkId: '137',
             hash: '0xabcd',
           },
         },
         {
-          expected: 'https://goerli.etherscan.io/tx/0xdef0',
+          expected: 'https://mumbai.polygonscan.com/tx/0xdef0',
           transaction: {
-            metamaskNetworkId: '5',
+            metamaskNetworkId: '80001',
             hash: '0xdef0',
           },
           rpcPrefs: {},
@@ -323,16 +323,16 @@ describe('token-tracker-link', function () {
           },
         },
         {
-          expected: 'https://etherscan.io/tx/0xabcd',
+          expected: 'https://polygonscan.com/tx/0xabcd',
           transaction: {
-            chainId: '0x1',
+            chainId: '0x89',
             hash: '0xabcd',
           },
         },
         {
-          expected: 'https://goerli.etherscan.io/tx/0xdef0',
+          expected: 'https://mumbai.polygonscan.com/tx/0xdef0',
           transaction: {
-            chainId: '0x5',
+            chainId: '0x13881',
             hash: '0xdef0',
           },
           rpcPrefs: {},
@@ -341,7 +341,7 @@ describe('token-tracker-link', function () {
           // test handling of `blockExplorerUrl` for a custom RPC
           expected: 'https://block.explorer/tx/0xabcd',
           transaction: {
-            chainId: '0x1f',
+            chainId: '0x89f',
             hash: '0xabcd',
           },
           rpcPrefs: {

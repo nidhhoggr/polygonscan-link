@@ -8,12 +8,12 @@ interface RpcPrefsInterface {
 
 export function createAccountLink(address: string, networkId: string): string {
   const prefix = prefixForNetwork(networkId);
-  return prefix === null ? '' : `https://${prefix}etherscan.io/address/${address}`;
+  return prefix === null ? '' : `https://${prefix}polygonscan.com/address/${address}`;
 }
 
 export function createAccountLinkForChain(address: string, chainId: string): string {
   const prefix = prefixForChain(chainId);
-  return prefix === null ? '' : `https://${prefix}etherscan.io/address/${address}`;
+  return prefix === null ? '' : `https://${prefix}polygonscan.com/address/${address}`;
 }
 
 export function createCustomAccountLink(address: string, customNetworkUrl: string): string {

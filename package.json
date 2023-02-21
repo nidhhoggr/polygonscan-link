@@ -1,7 +1,7 @@
 {
-  "name": "@metamask/etherscan-link",
-  "version": "2.2.0",
-  "description": "A library for generating etherscan links.",
+  "name": "polygonscan-link",
+  "version": "1.0.1",
+  "description": "A library for generating polygonscan links.",
   "main": "dist/index.js",
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
@@ -21,19 +21,19 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/MetaMask/etherscan-link.git"
+    "url": "git+ssh://git@github.com/nidhhoggr/polygonscan-link.git"
   },
   "keywords": [
-    "ethereum",
-    "etherscan",
+    "polygon",
+    "polygonscan",
     "link"
   ],
-  "author": "Dan Finlay <dan@danfinlay.com>",
+  "contributors": ["Dan Finlay <dan@danfinlay.com>","Joseph Persie <persie.joseph@gmail.com>"],
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MetaMask/etherscan-link/issues"
+    "url": "https://github.com/nidhhoggr/polygonscan-link/issues"
   },
-  "homepage": "https://github.com/MetaMask/etherscan-link#readme",
+  "homepage": "https://github.com/nidhhoggr/polygonscan-link#readme",
   "devDependencies": {
     "@metamask/eslint-config": "^5.0.0",
     "@typescript-eslint/eslint-plugin": "^4.14.2",

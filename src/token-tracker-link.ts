@@ -13,7 +13,7 @@ export function createTokenTrackerLink(
 ): string {
   const prefix = prefixForNetwork(networkId);
   return prefix === null ? '' :
-    `https://${prefix}etherscan.io/token/${tokenAddress}${
+    `https://${prefix}polygonscan.com/token/${tokenAddress}${
       holderAddress ? `?a=${holderAddress}` : ''}`;
 }
 
@@ -32,7 +32,7 @@ export function createTokenTrackerLinkForChain(
 ): string {
   const prefix = prefixForChain(chainId);
   return prefix === null ? '' :
-    `https://${prefix}etherscan.io/token/${tokenAddress}${
+    `https://${prefix}polygonscan.com/token/${tokenAddress}${
       holderAddress ? `?a=${holderAddress}` : ''}`;
 }
 
